@@ -1,6 +1,11 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
@@ -12,8 +17,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.validation.ObjectError;
 
-import shop.bean.ParentUser;
-import shop.bean.User;
+import course.bean.ParentUser;
+import course.bean.User;
+import course.service.ParentUserService;
 
 public class UserServiceTest
 {
@@ -32,16 +38,14 @@ public class UserServiceTest
 		user.setAge("10");
 	}
 
-	public void registerTeacherUser()
+
+	@Test
+	public void tsetLogin()
 	{
-
+		ParentUserService pus=new ParentUserService();
+		
 	}
-
-	public void registerOrganiazationUser()
-	{
-
-	}
-
+	
 	@Test
 	public void testValidation()
 	{ 
