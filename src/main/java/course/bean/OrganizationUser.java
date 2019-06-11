@@ -6,6 +6,7 @@ public class OrganizationUser extends User
 	private String id;//标识码
 	private String address;//店面地址
 	private String age;//教育合适年龄
+	
 	public String getRealm()
 	{
 		return realm;
