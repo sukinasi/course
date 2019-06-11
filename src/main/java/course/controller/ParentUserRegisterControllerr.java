@@ -44,7 +44,7 @@ class ParentUserRegisterController extends RegisterTemplate
 	@Override
 	protected boolean registerUser(Object user)
 	{
-		return pus.registerParentUser((ParentUser)user);
+		return pus.register((ParentUser)user);
 	}
 	
 }

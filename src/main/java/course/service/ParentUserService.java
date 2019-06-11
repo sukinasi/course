@@ -8,12 +8,19 @@ import course.dao.ParentUserDao;
 
 public class ParentUserService
 {
-	@Autowired
-	ParentUserDao pud;
+	/**
+	 * TODO 目前手动注入了依赖，日后应该改成Autowired
+	 */
+	ParentUserDao pud=new ParentUserDao();
 
-	public boolean registerParentUser(ParentUser user)
+	public boolean register(ParentUser userInfo)
 	{
-		return false;
+		// 查找用户名是否存在
+		User user = pud.findByUserName(userInfo.getUserName());
+		if(user!=null)
+			return false;
+		
+		return pud.register(userInfo);
 	}
 
 	/**
@@ -37,8 +44,12 @@ public class ParentUserService
 	{
 		ParentUser user=pud.findByUserName(userInfo.getUserName());
 		
+		//找不到用户
+		if(user==null)
+			return false;
+		
 		/**
-		 * TODO 设置user的各项
+		 * TODO 设置user的各项，注意不可更改项。
 		 */
 		user.setAge(userInfo.getAge());
 		user.setChildName(userInfo.getChildName());

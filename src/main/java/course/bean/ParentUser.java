@@ -8,7 +8,7 @@ public class ParentUser extends User
 	{
 	}
 
-	public ParentUser(String userName, String Password)
+	public ParentUser(String userName, String password)
 	{
 		this.userName=userName;
 		this.password=password;
