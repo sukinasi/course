@@ -3,11 +3,12 @@
 package course.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import course.bean.TeacherUser;
 import course.bean.User;
 import course.dao.TeacherUserDao;
-
+@Service
 public class TeacherUserService
 {
 	/**
