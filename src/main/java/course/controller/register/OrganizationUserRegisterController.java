@@ -1,4 +1,4 @@
-package course.controller;
+package course.controller.register;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import course.bean.OrganizationUser;
 import course.bean.User;
 import course.service.OrganizationUserService;
+import util.RegisterTemplate;
 
 @Controller
 public class OrganizationUserRegisterController extends RegisterTemplate

@@ -1,5 +1,5 @@
 
-package course.controller;
+package course.controller.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import course.bean.OrganizationUser;
 import course.service.OrganizationUserService;
+import util.LoginTemplate;
 
 @Controller
 class OrganizationUserLoginController extends LoginTemplate

@@ -1,4 +1,4 @@
-package course.controller;
+package util;
 
 import java.util.Iterator;
 
@@ -7,7 +7,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.servlet.ModelAndView;
 
 
-abstract class RegisterTemplate
+public abstract class RegisterTemplate
 {
 	
 	public ModelAndView template(Object user,BindingResult result)

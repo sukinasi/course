@@ -1,4 +1,4 @@
-package course.controller;
+package course.controller.register;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,34 +8,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import course.bean.ParentUser;
+import course.bean.TeacherUser;
 import course.bean.User;
-import course.service.ParentUserService;
+import course.service.TeacherUserService;
+import util.RegisterTemplate;
 
 @Controller
-class ParentUserRegisterController extends RegisterTemplate
+public class TeacherUserRegisterController extends RegisterTemplate
 {
 	@Autowired
-	ParentUserService pus;
+	TeacherUserService tus;
 	
 	
 	/**
 	 * 处理注册请求
 	 */
-	@RequestMapping(value="/registerParentUser",method = RequestMethod.POST)
-	public ModelAndView registerPOST(@Validated ParentUser user,BindingResult result)
+	@RequestMapping(value="/registerTeacherUser",method = RequestMethod.POST)
+	public ModelAndView registerPOST(@Validated TeacherUser user,BindingResult result)
 	{
 		return template(user, result);
 	}
-		
+	
 	/**
 	 *  返回注册表单页面
 	 */
-	@RequestMapping(path = "/registerParentUser", method = RequestMethod.GET)
+	@RequestMapping(path = "/registerTeacherUser", method = RequestMethod.GET)
 	public ModelAndView registerGet(User user)
 	{
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("registerParentUser");
+		mav.setViewName("registerTeacherUser");
 		return mav;
 	}
 	
@@ -43,7 +44,6 @@ class ParentUserRegisterController extends RegisterTemplate
 	@Override
 	protected boolean registerUser(Object user)
 	{
-		return pus.register((ParentUser)user);
+		return tus.register((TeacherUser)user);
 	}
-	
 }

@@ -1,4 +1,4 @@
-package course.controller;
+package course.controller.user;
 
 import java.util.HashMap;
 import java.util.Map;

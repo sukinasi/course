@@ -1,5 +1,4 @@
-
-package course.controller;
+package course.controller.login;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,19 +15,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import course.bean.TeacherUser;
-import course.service.TeacherUserService;
+import course.bean.ParentUser;
+import course.service.ParentUserService;
+import util.LoginTemplate;
 
 @Controller
-class TeacherUserLoginController extends LoginTemplate
+class ParentUserLoginController extends LoginTemplate
 {
 	@Autowired
-	TeacherUserService tus;
+	ParentUserService pus;
 	
 	/**
 	 * 处理登陆请求
 	 */
-	@RequestMapping(value="/TeacherUserlogin")
+	@RequestMapping(value="/ParentUserlogin")
 	@ResponseBody
 	public Map<String,String> login(String userName,String password,HttpSession session)
 	{
@@ -39,6 +39,6 @@ class TeacherUserLoginController extends LoginTemplate
 	@Override
 	protected int loginUser(String userName, String password)
 	{
-		return tus.login(userName, password);
+		return pus.login(userName, password);
 	}
 }
