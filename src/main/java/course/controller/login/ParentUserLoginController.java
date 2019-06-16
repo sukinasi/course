@@ -32,6 +32,7 @@ class ParentUserLoginController extends LoginTemplate
 	@ResponseBody
 	public Map<String,String> login(String userName,String password,HttpSession session)
 	{
+		
 		return template(password, password, session);
 	}
 	
