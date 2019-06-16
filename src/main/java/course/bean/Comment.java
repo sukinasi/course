@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.Range;
 
 public class Comment
 {	
+	
 	private String CommentId;
 	@Range(min=0,max=100,message="超出0-100分数限制")
 	private String image;	//图片

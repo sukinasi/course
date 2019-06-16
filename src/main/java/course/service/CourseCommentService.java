@@ -1,5 +1,7 @@
 package course.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import course.bean.Comment;
@@ -14,12 +16,12 @@ public class CourseCommentService {
 	
 	public boolean addComment(String courseId, Comment courseComment) {
 		ccd.addList(courseComment);
-		cfcd.addrelationship(courseId,courseComment);
+		cfcd.addrelationship(courseId,courseComment.getCommentId());
 		return true;
-	
-		
 	}
-
+	public List<Comment> checkComment(String courseId) {	
+		return ccd.gainComment(cfcd.checkCommentId(courseId));
+		}
 	
 
 }

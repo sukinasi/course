@@ -12,9 +12,12 @@
 <body>
 <form method="post" action="/commentUpLoad" enctype="multipart/form-data">
 
+<input type="text" hidden="true" name="CommentId"/><br><br>
+<input type="text" hidden="true" name="teacherUserName"/><br><br>
 教师星级：<input type="text" name="teacherstar"/><br><br>
 教师评论：<input type="text" name="teacherdiscription"/><br><br>
-<input type="text" hidden="true" 
+ 
+<input type="text" hidden="true" name="CourseId"/><br><br>
 课程星级：<input type="text" name="coursestar"/><br><br>
 课程评论：<input type="text" name="coursediscription"/><br><br>
 
