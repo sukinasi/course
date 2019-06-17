@@ -8,12 +8,13 @@ import course.bean.Comment;
 import course.dao.CommentForTeacherDao;
 import course.dao.CommentForUserDao;
 import course.dao.TeacherCommentDao;
+import util.UserFactory;
 
 @Service
 public class TeacherCommentService {
-	TeacherCommentDao tcd=new TeacherCommentDao();
-	CommentForTeacherDao cftd =new CommentForTeacherDao();
-	CommentForUserDao cfud =new CommentForUserDao();
+	TeacherCommentDao tcd=UserFactory.TeacherCommentDaoFactory();
+	CommentForTeacherDao cftd =UserFactory.CommentForTeacherDaoFactory();
+	CommentForUserDao cfud =UserFactory.CommentForUserDaoFactory();
 	
 	public boolean addComment(String userName,String teacherUserName,Comment teacherComment) {
 		tcd.addList(teacherComment);
@@ -25,5 +26,10 @@ public class TeacherCommentService {
 	public List<Comment> checkComment(String teacherUserName) {	
 		return tcd.gainComment(cftd.checkCommentId(teacherUserName));
 		}
+
+	public void deleteTeacherComment(String commentId) {
+		tcd.delete(commentId);
+		cftd.delete(commentId);
+	}
 
 }

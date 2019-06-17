@@ -6,14 +6,21 @@ import org.springframework.stereotype.Service;
 
 import course.bean.Comment;
 import course.dao.CommentForUserDao;
+import util.UserFactory;
 
 @Service
 public class UserCommentService {
-	CommentForUserDao cfud = new CommentForUserDao();
+	CommentForUserDao cfud = UserFactory.CommentForUserDaoFactory();
 
 	public List<Comment> checkComment(String userName) {
 
 		return cfud.gainComment(cfud.checkCommentId(userName));
+	}
+
+
+	public void deleteUserComment(String commentId) {
+		cfud.delete(commentId);
+		
 	}
 
 }

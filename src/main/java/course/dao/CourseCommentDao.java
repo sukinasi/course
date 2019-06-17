@@ -7,6 +7,7 @@ import course.bean.Comment;
 
 public class CourseCommentDao {
 	private List<Comment> courseCommentList;
+	private Comment NULL;
 	
 	public CourseCommentDao()
 	{
@@ -27,4 +28,23 @@ public class CourseCommentDao {
 		 }
 		return outCommentList;
 	}
+	public Comment select(String commentId) {
+		Comment comment=new Comment();
+		for(int i=0;i<=courseCommentList.size();i++) {
+			if(courseCommentList.get(i).getCommentId()==commentId){
+				comment=courseCommentList.get(i);
+				return comment;
+				}		
+		}
+		return NULL;
+	}
+
+	public void delete(String commentId) {
+		for(int i=0;i<=courseCommentList.size();i++) {
+			if(courseCommentList.get(i).getCommentId()==commentId)
+				courseCommentList.remove(i);
+		}	
+	}
+
+	
 }
