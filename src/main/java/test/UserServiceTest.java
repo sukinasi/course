@@ -79,6 +79,9 @@ public class UserServiceTest {
 		assertEquals("2",ccs.checkComment("1").get(1).getCommentId());
 		
 		assertEquals(true,ccs.deleteCourseComment("2"));
+		assertEquals(true,ccs.deleteCourseComment("3"));
+		assertEquals("4",ccs.checkComment("1").get(1).getCommentId());
+		
 		
 		
 	

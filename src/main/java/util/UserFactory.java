@@ -4,6 +4,7 @@ import course.dao.CommentForCourseDao;
 import course.dao.CommentForTeacherDao;
 import course.dao.CommentForUserDao;
 import course.dao.CourseCommentDao;
+import course.dao.NewsDao;
 import course.dao.TeacherCommentDao;
 
 public class UserFactory {
@@ -16,6 +17,8 @@ private static CommentForUserDao cfd=new CommentForUserDao();
 private static CourseCommentDao ccd =new CourseCommentDao();
 
 private static TeacherCommentDao tcd=new TeacherCommentDao();
+
+private static NewsDao nd=new NewsDao();
 
 public static CommentForCourseDao CommentForCourseDaoFactory() {
 	return cfcd;
@@ -31,5 +34,8 @@ public static CourseCommentDao CourseCommentDaoFactory() {
 }
 public static TeacherCommentDao TeacherCommentDaoFactory() {
 	return tcd;
+}
+public static NewsDao NewsDaoFactory() {
+	return nd;
 }
 }

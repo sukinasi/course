@@ -39,7 +39,7 @@ public class CommentForUserDao {
 		List<Comment> outCommentList = new LinkedList<Comment>();
 
 		for (int q = 0; q < idList.size(); q++) {
-			if(ccd.select(idList.get(q))!=NULL)
+			if(ccd.select(idList.get(q))!=NULL)//查用户的评论
 				outCommentList.add(ccd.select(idList.get(q)));
 			else
 				outCommentList.add(tcd.select(idList.get(q)));

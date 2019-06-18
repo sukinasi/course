@@ -16,9 +16,6 @@ public class CommentController {
 	CourseCommentService ccs = new CourseCommentService();
 	UserCommentService ucs = new UserCommentService();
 
-	Comment teacherComment = new Comment();
-	Comment courseComment = new Comment();
-
 	@RequestMapping(value = "/commentUpLoad", method = RequestMethod.GET)
 	public ModelAndView upconmmentget() {
 		ModelAndView mav = new ModelAndView();
@@ -29,6 +26,9 @@ public class CommentController {
 	@RequestMapping(value = "/commentUpLoad", method = RequestMethod.POST)
 	public ModelAndView upconmment(String userName, String teacherUserName, String teacherStar,
 			String teacherDiscription, String CourseId, String courseStar, String courseDiscription) {
+		Comment teacherComment = new Comment();
+		Comment courseComment = new Comment();
+
 		ModelAndView mav = new ModelAndView();
 
 		teacherComment.setDescription(teacherDiscription);
@@ -102,7 +102,7 @@ public class CommentController {
 		return mav;
 	}
 
-	@RequestMapping(value ="/deleteComment",method = RequestMethod.POST)
+	@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
 	public ModelAndView deleteComment(String CommentId) {
 
 		ModelAndView mav = new ModelAndView();
