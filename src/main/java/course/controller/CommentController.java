@@ -18,18 +18,17 @@ public class CommentController {
 
 	Comment teacherComment = new Comment();
 	Comment courseComment = new Comment();
-	
-	
-	
-	@RequestMapping(value="/commentUpLoad",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/commentUpLoad", method = RequestMethod.GET)
 	public ModelAndView upconmmentget() {
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("commentUpLoad");
 		return mav;
 	}
 
-	@RequestMapping(value="/commentUpLoad",method = RequestMethod.POST)
-	public ModelAndView upconmment(String userName, String teacherUserName, String teacherStar,String teacherDiscription, String CourseId, String courseStar, String courseDiscription) {
+	@RequestMapping(value = "/commentUpLoad", method = RequestMethod.POST)
+	public ModelAndView upconmment(String userName, String teacherUserName, String teacherStar,
+			String teacherDiscription, String CourseId, String courseStar, String courseDiscription) {
 		ModelAndView mav = new ModelAndView();
 
 		teacherComment.setDescription(teacherDiscription);
@@ -40,12 +39,19 @@ public class CommentController {
 		tcs.addComment(userName, teacherUserName, teacherComment);
 
 		ccs.addComment(userName, CourseId, courseComment);
-		
+
 		mav.setViewName("success");
+		return mav;
+	}// 添加评论
+
+	@RequestMapping(value = "/checkTeacherComment", method = RequestMethod.GET)
+	public ModelAndView checkTeacherCommentget() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("checkTeacherComment");
 		return mav;
 	}
 
-	@RequestMapping("/checkTeacherComment")
+	@RequestMapping(value = "/checkTeacherComment", method = RequestMethod.POST)
 	public ModelAndView checkTeacherComment(String teacherUserName) {
 
 		ModelAndView mav = new ModelAndView();
@@ -53,9 +59,16 @@ public class CommentController {
 		tcs.checkComment(teacherUserName);
 
 		return mav;
+	}// 查看教师评论
+
+	@RequestMapping(value = "/checkCourseComment", method = RequestMethod.GET)
+	public ModelAndView checkCourseCommentget() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("checkCourseComment");
+		return mav;
 	}
 
-	@RequestMapping("/checkCourseComment")
+	@RequestMapping(value = "/checkCourseComment", method = RequestMethod.POST)
 	public ModelAndView checkCourseComment(String CourseId) {
 
 		ModelAndView mav = new ModelAndView();
@@ -63,9 +76,16 @@ public class CommentController {
 		ccs.checkComment(CourseId);
 
 		return mav;
+	}// 查看课程评论
+
+	@RequestMapping(value = "/checkUserComment", method = RequestMethod.GET)
+	public ModelAndView checkUserCommentget() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("checkUserComment");
+		return mav;
 	}
 
-	@RequestMapping("/checkUserComment")
+	@RequestMapping(value = "/checkUserComment", method = RequestMethod.POST)
 	public ModelAndView checkUserComment(String userName) {
 
 		ModelAndView mav = new ModelAndView();
@@ -73,9 +93,16 @@ public class CommentController {
 		ucs.checkComment(userName);
 
 		return mav;
+	}// 查看用户评论
+
+	@RequestMapping(value = "/deleteComment", method = RequestMethod.GET)
+	public ModelAndView deleteCommentget() {
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("deleteComment");
+		return mav;
 	}
 
-	@RequestMapping("/deleteComment")
+	@RequestMapping(value ="/deleteComment",method = RequestMethod.POST)
 	public ModelAndView deleteComment(String CommentId) {
 
 		ModelAndView mav = new ModelAndView();
@@ -85,6 +112,6 @@ public class CommentController {
 
 		ucs.deleteUserComment(CommentId);
 		return mav;
-	}
+	}// 删除用户评论
 
 }

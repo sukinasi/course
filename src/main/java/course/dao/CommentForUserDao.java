@@ -8,7 +8,8 @@ import course.bean.UserComment;
 import util.UserFactory;
 
 public class CommentForUserDao {
-	UserComment userrelationship = new UserComment();
+	
+	
 	private List<UserComment> ul = new LinkedList<UserComment>();
 	
 	CourseCommentDao ccd = UserFactory.CourseCommentDaoFactory();
@@ -16,6 +17,7 @@ public class CommentForUserDao {
 	private Comment NULL;
 
 	public void addrelationship(String userName, String CommentId) {
+		UserComment userrelationship = new UserComment();
 		userrelationship.setUserName(userName);
 		userrelationship.setCommentId(CommentId);
 		ul.add(userrelationship);
@@ -25,7 +27,7 @@ public class CommentForUserDao {
 
 		List<String> idList = new LinkedList<String>();
 
-		for (int i = 0; i <= ul.size(); i++) {
+		for (int i = 0; i < ul.size(); i++) {
 			if (ul.get(i).getUserName() == userName)
 				idList.add(ul.get(i).getCommentId());
 		}
@@ -36,7 +38,7 @@ public class CommentForUserDao {
 
 		List<Comment> outCommentList = new LinkedList<Comment>();
 
-		for (int q = 0; q <= idList.size(); q++) {
+		for (int q = 0; q < idList.size(); q++) {
 			if(ccd.select(idList.get(q))!=NULL)
 				outCommentList.add(ccd.select(idList.get(q)));
 			else
@@ -46,7 +48,7 @@ public class CommentForUserDao {
 	}
 
 	public void delete(String commentId) {
-		for (int i = 0; i <= ul.size(); i++) {
+		for (int i = 0; i < ul.size(); i++) {
 			if (ul.get(i).getCommentId() == commentId)
 				ul.remove(i);
 		}

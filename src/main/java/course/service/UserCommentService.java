@@ -18,9 +18,9 @@ public class UserCommentService {
 	}
 
 
-	public void deleteUserComment(String commentId) {
+	public boolean deleteUserComment(String commentId) {
 		cfud.delete(commentId);
-		
+		return true;
 	}
 
 }

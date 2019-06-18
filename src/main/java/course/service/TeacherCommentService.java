@@ -27,9 +27,10 @@ public class TeacherCommentService {
 		return tcd.gainComment(cftd.checkCommentId(teacherUserName));
 		}
 
-	public void deleteTeacherComment(String commentId) {
+	public boolean deleteTeacherComment(String commentId) {
 		tcd.delete(commentId);
 		cftd.delete(commentId);
+		return true;
 	}
 
 }

@@ -27,9 +27,10 @@ public class CourseCommentService {
 		return ccd.gainComment(cfcd.checkCommentId(courseId));
 	}
 
-	public void deleteCourseComment(String commentId) {
+	public boolean deleteCourseComment(String commentId) {
 		ccd.delete(commentId);
 		cfcd.delete(commentId);
+		return true;
 	}
 
 

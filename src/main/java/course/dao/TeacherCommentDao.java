@@ -13,14 +13,15 @@ public class TeacherCommentDao {
 		teacherCommentList = new LinkedList<Comment>();
 	}
 
-	public void addList(Comment comment) {
+	public boolean addList(Comment comment) {
 		teacherCommentList.add(comment);
+		return true;
 	}
 
 	public List<Comment> gainComment(List<String> idList) {
 		List<Comment> outCommentList = new LinkedList<Comment>();
-		for (int q = 0; q <= idList.size(); q++) {
-			for (int i = 0; i <= teacherCommentList.size(); i++) {
+		for (int q = 0; q < idList.size(); q++) {
+			for (int i = 0; i < teacherCommentList.size(); i++) {
 				if (teacherCommentList.get(i).getCommentId() == idList.get(q))
 					outCommentList.add(teacherCommentList.get(i));
 			}
@@ -30,7 +31,7 @@ public class TeacherCommentDao {
 
 	public Comment select(String commentId) {
 		Comment comment = new Comment();
-		for (int i = 0; i <= teacherCommentList.size(); i++) {
+		for (int i = 0; i < teacherCommentList.size(); i++) {
 			if (teacherCommentList.get(i).getCommentId() == commentId) {
 				comment = teacherCommentList.get(i);
 				return comment;
@@ -40,7 +41,7 @@ public class TeacherCommentDao {
 	}
 
 	public void delete(String commentId) {
-		for (int i = 0; i <= teacherCommentList.size(); i++) {
+		for (int i = 0; i < teacherCommentList.size(); i++) {
 			if (teacherCommentList.get(i).getCommentId() == commentId)
 				teacherCommentList.remove(i);
 		}
