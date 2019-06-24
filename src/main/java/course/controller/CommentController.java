@@ -3,17 +3,20 @@ package course.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sun.net.httpserver.Authenticator.Success;
+
 import course.bean.Comment;
-import course.service.CourseCommentService;
+import course.service.SubjectCommentService;
 import course.service.TeacherCommentService;
 import course.service.UserCommentService;
 
 @Controller
 public class CommentController {
 	TeacherCommentService tcs = new TeacherCommentService();
-	CourseCommentService ccs = new CourseCommentService();
+	SubjectCommentService scs = new SubjectCommentService();
 	UserCommentService ucs = new UserCommentService();
 
 	@RequestMapping(value = "/commentUpLoad", method = RequestMethod.GET)
@@ -24,24 +27,26 @@ public class CommentController {
 	}
 
 	@RequestMapping(value = "/commentUpLoad", method = RequestMethod.POST)
-	public ModelAndView upconmment(String userName, String teacherUserName, String teacherStar,
-			String teacherDiscription, String CourseId, String courseStar, String courseDiscription) {
+	@ResponseBody()
+	public String upconmment(String userName, String teacherUserName, String teacherStar,
+			String teacherDiscription, String subjectId, String subjectStar, String subjectDiscription) {
 		Comment teacherComment = new Comment();
-		Comment courseComment = new Comment();
+		Comment subjectComment = new Comment();
 
-		ModelAndView mav = new ModelAndView();
 
 		teacherComment.setDescription(teacherDiscription);
 		teacherComment.setDescription(teacherStar);
-		courseComment.setDescription(courseDiscription);
-		courseComment.setDescription(courseStar);
-
+		teacherComment.setType("1");
+		subjectComment.setDescription(subjectDiscription);
+		subjectComment.setDescription(subjectStar);
+		subjectComment.setType("2");
+		
 		tcs.addComment(userName, teacherUserName, teacherComment);
 
-		ccs.addComment(userName, CourseId, courseComment);
+		scs.addComment(userName, subjectId, subjectComment);
 
-		mav.setViewName("success");
-		return mav;
+		
+		return "success";
 	}// 添加评论
 
 	@RequestMapping(value = "/checkTeacherComment", method = RequestMethod.GET)
@@ -61,19 +66,19 @@ public class CommentController {
 		return mav;
 	}// 查看教师评论
 
-	@RequestMapping(value = "/checkCourseComment", method = RequestMethod.GET)
-	public ModelAndView checkCourseCommentget() {
+	@RequestMapping(value = "/checksubjectComment", method = RequestMethod.GET)
+	public ModelAndView checksubjectCommentget() {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("checkCourseComment");
+		mav.setViewName("checksubjectComment");
 		return mav;
 	}
 
-	@RequestMapping(value = "/checkCourseComment", method = RequestMethod.POST)
-	public ModelAndView checkCourseComment(String CourseId) {
+	@RequestMapping(value = "/checksubjectComment", method = RequestMethod.POST)
+	public ModelAndView checksubjectComment(String subjectId) {
 
 		ModelAndView mav = new ModelAndView();
 
-		ccs.checkComment(CourseId);
+		scs.checkComment(subjectId);
 
 		return mav;
 	}// 查看课程评论
@@ -103,15 +108,15 @@ public class CommentController {
 	}
 
 	@RequestMapping(value = "/deleteComment", method = RequestMethod.POST)
-	public ModelAndView deleteComment(String CommentId) {
+	@ResponseBody()
+	public String deleteComment(String CommentId) {
 
-		ModelAndView mav = new ModelAndView();
 		tcs.deleteTeacherComment(CommentId);
 
-		ccs.deleteCourseComment(CommentId);
+		scs.deleteSubjectComment(CommentId);
 
 		ucs.deleteUserComment(CommentId);
-		return mav;
+		return "success";
 	}// 删除用户评论
 
 }

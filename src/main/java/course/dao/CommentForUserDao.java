@@ -12,9 +12,8 @@ public class CommentForUserDao {
 	
 	private List<UserComment> ul = new LinkedList<UserComment>();
 	
-	CourseCommentDao ccd = UserFactory.CourseCommentDaoFactory();
-	TeacherCommentDao tcd = UserFactory.TeacherCommentDaoFactory();
-	private Comment NULL;
+	
+	CommentDao cd = UserFactory.CommentDaoFactory();
 
 	public void addrelationship(String userName, String CommentId) {
 		UserComment userrelationship = new UserComment();
@@ -32,19 +31,6 @@ public class CommentForUserDao {
 				idList.add(ul.get(i).getCommentId());
 		}
 		return idList;
-	}
-
-	public List<Comment> gainComment(List<String> idList) {
-
-		List<Comment> outCommentList = new LinkedList<Comment>();
-
-		for (int q = 0; q < idList.size(); q++) {
-			if(ccd.select(idList.get(q))!=NULL)//查用户的评论
-				outCommentList.add(ccd.select(idList.get(q)));
-			else
-				outCommentList.add(tcd.select(idList.get(q)));
-		}
-		return outCommentList;
 	}
 
 	public void delete(String commentId) {

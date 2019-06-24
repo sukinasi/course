@@ -2,7 +2,7 @@ package course.bean;
 
 public class TeacherComment {
 private String teacherUserName;
-private String CommentId;
+private String commentId;
 public String getTeacherUserName() {
 	return teacherUserName;
 }
@@ -12,11 +12,11 @@ public void setTeacherUserName(String teacherUserName) {
 }
 
 public String getCommentId() {
-	return CommentId;
+	return commentId;
 }
 
 public void setCommentId(String commentId) {
-	CommentId = commentId;
+	this.commentId = commentId;
 }
 
 }

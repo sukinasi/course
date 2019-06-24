@@ -1,0 +1,15 @@
+spring:
+       mvc:
+            view: 
+                 prefix: /WEB-INF/jsp/ 
+                 suffix: .jsp
+                 
+       datasource:
+                   url: jdbc:mysql://localhost:3306/course
+                   username: root
+                   password: 512323
+                   driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+        type-aliases-package: course.bean
+        

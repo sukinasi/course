@@ -7,7 +7,8 @@ import org.hibernate.validator.constraints.Range;
 public class Comment
 {	
 
-	private String CommentId;
+	private String commentId;
+	private String type;
 	@Range(min=0,max=100,message="超出0-100分数限制")
 	private String image;	//图片
 	private String description;	//文字描述
@@ -32,9 +33,15 @@ public class Comment
 		this.star = star;
 	}
 	public String getCommentId() {
-		return CommentId;
+		return commentId;
 	}
 	public void setCommentId(String commentId) {
-		CommentId = commentId;
+		this.commentId = commentId;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 }

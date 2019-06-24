@@ -1,8 +1,9 @@
 package course.bean;
 
-public class UserComment {
-private String userName;
+public class SubjectComment {
+private String subjectId;
 private String commentId;
+
 
 public String getCommentId() {
 	return commentId;
@@ -12,12 +13,12 @@ public void setCommentId(String commentId) {
 	this.commentId = commentId;
 }
 
-public String getUserName() {
-	return userName;
+public String getSubjectId() {
+	return subjectId;
 }
 
-public void setUserName(String userName) {
-	this.userName = userName;
+public void setSubjectId(String subjectId) {
+	this.subjectId = subjectId;
 }
 
 }

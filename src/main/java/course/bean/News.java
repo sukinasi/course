@@ -5,7 +5,7 @@ private String newsId;
 private String topic;
 private String content;
 
-public String getNewId() {
+public String getNewsId() {
 	return newsId;
 }
 

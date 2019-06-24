@@ -19,28 +19,29 @@ import org.junit.Test;
 import org.springframework.validation.ObjectError;
 
 import course.bean.Comment;
-import course.bean.CourseComment;
+import course.bean.News;
 import course.bean.ParentUser;
 import course.bean.User;
-import course.dao.CommentForCourseDao;
+import course.dao.CommentForSubjectDao;
 import course.dao.CommentForUserDao;
-import course.dao.CourseCommentDao;
-import course.dao.TeacherCommentDao;
-import course.service.CourseCommentService;
+import course.dao.NewsDao;
+import course.dao.CommentDao;
+import course.service.SubjectCommentService;
+import course.service.NewsService;
 import course.service.ParentUserService;
 import util.UserFactory;
 
 public class UserServiceTest {
 	private static Validator validator;
 	private static ParentUserService pus;
-	private static CourseCommentService ccs;
+	private static SubjectCommentService scs;
+	private static NewsService ns;
+	private static CommentDao cd;
 
-	private static CourseCommentDao ccd;
-	private static TeacherCommentDao tcd;
-
-	private static CommentForCourseDao cfcd;
+	private static CommentForSubjectDao cfcd;
 	private static CommentForUserDao cfud;
-
+	
+	private static NewsDao nd;
 	/**
 	 * 进行一些初始化工作
 	 */
@@ -49,13 +50,15 @@ public class UserServiceTest {
 		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();
 		pus = new ParentUserService();
-		ccs = new CourseCommentService();
-
-		ccd = new CourseCommentDao();
-		tcd = new TeacherCommentDao();
+		scs = new SubjectCommentService();
+		ns = new NewsService();
+		cd = new CommentDao();
 		
-		cfcd = new CommentForCourseDao();
+		cfcd = new CommentForSubjectDao();
 		cfud = new CommentForUserDao();
+		
+		nd =new NewsDao();
+		
 	}
 
 	/**
@@ -69,24 +72,19 @@ public class UserServiceTest {
 		idList.add("3");
 		idList.add("4");
 		
-		assertEquals(true,ccs.addComment("1","1",addcom("1", "qqqqq", "2")) );
-		assertEquals(true,ccs.addComment("1","1",addcom("2", "qqqqq", "2")) );
-		assertEquals(true,ccs.addComment("1","1",addcom("3", "qqqqq", "2")) );
-		assertEquals(true,ccs.addComment("1","1",addcom("4", "qqqqq", "2")) );
+		assertEquals(true,scs.addComment("1","1",addcom("1", "qqqqq", "2")) );
+		assertEquals(true,scs.addComment("1","1",addcom("2", "qqqqq", "2")) );
+		assertEquals(true,scs.addComment("1","1",addcom("3", "qqqqq", "2")) );
+		assertEquals(true,scs.addComment("1","1",addcom("4", "qqqqq", "2")) );
 
 
-		assertEquals("1",ccs.checkComment("1").get(0).getCommentId());
-		assertEquals("2",ccs.checkComment("1").get(1).getCommentId());
+		assertEquals("1",scs.checkComment("1").get(0).getCommentId());
+		assertEquals("2",scs.checkComment("1").get(1).getCommentId());
 		
-		assertEquals(true,ccs.deleteCourseComment("2"));
-		assertEquals(true,ccs.deleteCourseComment("3"));
-		assertEquals("4",ccs.checkComment("1").get(1).getCommentId());
-		
-		
-		
+		assertEquals(true,scs.deleteSubjectComment("2"));
+		assertEquals(true,scs.deleteSubjectComment("3"));
+		assertEquals("4",scs.checkComment("1").get(1).getCommentId());
 	
-		
-		
 	}
 
 	public Comment addcom(String CommentId, String setDescription, String Star) {
